@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Mini juegon JG</string>
+    <string name="boton_init_play">Jugar</string>
+    <string name="boton_init_quit">Salir</string>
+    <string name="boton_juego_reiniciar">Reiniciar</string>
+    <string name="boton_juego_quit">Salir</string>
+
+</resources>
