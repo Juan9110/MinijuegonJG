@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -29,7 +30,7 @@ public class Juego  extends Activity {
 
     //IMAGENES
     int[] imagenes;
-    int fondo;
+    int rinegan;
     
     //VARIABLE DEL JUEGO
 
@@ -125,7 +126,7 @@ public class Juego  extends Activity {
                 R.drawable.la7,
                 
         };
-        fondo = R.drawable.fondo;
+        rinegan = R.drawable.rinegan;
     }
     
    private ArrayList<Integer> barajar(int Longitud){
@@ -134,10 +135,53 @@ public class Juego  extends Activity {
             result.add(i % Longitud);
         }
         Collections.shuffle(result);
-      // System.out.println(Arrays.toString(result.toArray()));
+       System.out.println(Arrays.toString(result.toArray()));
         return result;
    }
-    
+
+   private void comprobar(int i, final ImageButton imgb) {
+       if (PRIMERO == null) {
+           PRIMERO = imgb;
+           PRIMERO.setScaleType(ImageView.ScaleType.CENTER_CROP);
+           PRIMERO.setImageResource(imagenes[arrayDesordenado.get(i)]);
+           PRIMERO.setEnabled(false);
+           numeroPrimero = arrayDesordenado.get(i);
+       } else {
+           bloque = true;
+           imgb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+           imgb.setImageResource(imagenes[arrayDesordenado.get(i)]);
+           imgb.setEnabled(false);
+           numeroSegundo = arrayDesordenado.get(i);
+           if (numeroPrimero == numeroSegundo) {
+               PRIMERO = null;
+               bloque = false;
+               aciertos++;
+               puntuacion++;
+               textoPuntuacion.setText("Puntuacion: " + puntuacion);
+               if (aciertos == imagenes.length) {
+                   Toast toast = Toast.makeText(getApplicationContext(), "Felicidades has ganado!! ", Toast.LENGTH_SHORT);
+                   toast.show();
+               }
+           } else {
+              handler.postDelayed(new Runnable() {
+                  @Override
+                  public void run() {
+                      PRIMERO.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                      PRIMERO.setImageResource(rinegan);
+                      PRIMERO.setEnabled(true);
+                      imgb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                      imgb.setImageResource(rinegan);
+                      imgb.setEnabled(true);
+                      bloque = false;
+                      PRIMERO = null;
+                      puntuacion--;
+                      textoPuntuacion.setText("Puntuacion: " + puntuacion);
+                  }
+              },700);
+           }
+
+       }
+   }
     
 
     private void init(){
@@ -148,9 +192,34 @@ public class Juego  extends Activity {
         arrayDesordenado = barajar(imagenes.length);
         for(int i=0; i<tablero.length; i++) {
             tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
-            //tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
-            tablero[i].setImageResource(fondo);
+            tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
+            //tablero[i].setImageResource(rinegan);
         }
+
+       handler.postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               for(int i=0; i<tablero.length; i++) {
+                   tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+                   //tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
+                   tablero[i].setImageResource(rinegan);
+               }
+           }
+       }, 700);
+
+        for(int i=0; i<tablero.length; i++){
+            final int j = i;
+            tablero[i].setEnabled(true);
+            tablero[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!bloque)
+                        comprobar(j, tablero[j]);
+
+                }
+            });
+        }
+
     }
 
 }

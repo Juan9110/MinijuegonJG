@@ -171,13 +171,21 @@
                 android:id="@+id/botonJuegoReiniciar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/boton_juego_reiniciar" />
+                android:backgroundTint="#D60F0F"
+                android:text="@string/boton_juego_reiniciar"
+                android:textColor="#0C0B0B"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/botonJuego_Salir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/boton_juego_quit" />
+                android:backgroundTint="#D10A0A"
+                android:text="@string/boton_juego_quit"
+                android:textColor="#170606"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -193,14 +201,18 @@
                 android:id="@+id/texto_puntuacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#723CD1"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="39dp"
+                android:text="@string/aciertos"
+                android:textColor="#6438B3"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
