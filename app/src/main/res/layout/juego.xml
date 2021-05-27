@@ -171,7 +171,7 @@
                 android:id="@+id/botonJuegoReiniciar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="#D60F0F"
+                android:backgroundTint="#B32323"
                 android:text="@string/boton_juego_reiniciar"
                 android:textColor="#0C0B0B"
                 android:textSize="24sp"
@@ -181,7 +181,7 @@
                 android:id="@+id/botonJuego_Salir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#D10A0A"
+                android:backgroundTint="#AF2121"
                 android:text="@string/boton_juego_quit"
                 android:textColor="#170606"
                 android:textSize="24sp"
@@ -201,7 +201,7 @@
                 android:id="@+id/texto_puntuacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#723CD1"
+                android:textColor="#2B0101"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -210,7 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
                 android:text="@string/aciertos"
-                android:textColor="#6438B3"
+                android:textColor="#350202"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

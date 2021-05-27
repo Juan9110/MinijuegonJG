@@ -30,7 +30,7 @@ public class Juego  extends Activity {
 
     //IMAGENES
     int[] imagenes;
-    int rinegan;
+    int fondo1;
     
     //VARIABLE DEL JUEGO
 
@@ -126,7 +126,7 @@ public class Juego  extends Activity {
                 R.drawable.la7,
                 
         };
-        rinegan = R.drawable.rinegan;
+     fondo1= R.drawable.fondo1;
     }
     
    private ArrayList<Integer> barajar(int Longitud){
@@ -167,10 +167,10 @@ public class Juego  extends Activity {
                   @Override
                   public void run() {
                       PRIMERO.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                      PRIMERO.setImageResource(rinegan);
+                      PRIMERO.setImageResource(fondo1);
                       PRIMERO.setEnabled(true);
                       imgb.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                      imgb.setImageResource(rinegan);
+                      imgb.setImageResource(fondo1);
                       imgb.setEnabled(true);
                       bloque = false;
                       PRIMERO = null;
@@ -202,7 +202,7 @@ public class Juego  extends Activity {
                for(int i=0; i<tablero.length; i++) {
                    tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
                    //tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
-                   tablero[i].setImageResource(rinegan);
+                   tablero[i].setImageResource(fondo1);
                }
            }
        }, 700);
