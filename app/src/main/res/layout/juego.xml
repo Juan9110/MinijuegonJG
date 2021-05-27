@@ -202,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#2B0101"
-                android:textSize="25sp"
+                android:textSize="34sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -211,7 +211,7 @@
                 android:layout_height="39dp"
                 android:text="@string/aciertos"
                 android:textColor="#350202"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
