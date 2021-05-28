@@ -1,6 +1,7 @@
 package com.example.minijuegonjg;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -26,6 +27,8 @@ public class Juego  extends Activity {
     Button botonReiniciar, botonSalir;
     TextView textoPuntuacion;
     TextView txt_aciertos;
+    MediaPlayer sonidos_a, sonido_g, sonido_p, sonido_fallar;
+
     int puntuacion;
     int aciertos;
 
@@ -148,6 +151,8 @@ public class Juego  extends Activity {
            PRIMERO.setScaleType(ImageView.ScaleType.CENTER_CROP);
            PRIMERO.setImageResource(imagenes[arrayDesordenado.get(i)]);
            PRIMERO.setEnabled(false);
+           sonidos_a.seekTo(0);
+           sonidos_a.start();
            numeroPrimero = arrayDesordenado.get(i);
        } else {
            bloque = true;
@@ -156,6 +161,8 @@ public class Juego  extends Activity {
            imgb.setEnabled(false);
            numeroSegundo = arrayDesordenado.get(i);
            if (numeroPrimero == numeroSegundo) {
+               sonido_p.seekTo(0);
+               sonido_p.start();
                PRIMERO = null;
                bloque = false;
                aciertos++;
@@ -165,8 +172,13 @@ public class Juego  extends Activity {
                if (aciertos == imagenes.length) {
                    Toast toast = Toast.makeText(getApplicationContext(), "Felicidades has ganado!! ", Toast.LENGTH_SHORT);
                    toast.show();
+                   sonido_g.seekTo(0);
+                   sonido_g.start();
                }
            } else {
+               //no son iguales
+             sonido_fallar.seekTo(0);
+             sonido_fallar.start();
               handler.postDelayed(new Runnable() {
                   @Override
                   public void run() {
@@ -181,7 +193,7 @@ public class Juego  extends Activity {
                       puntuacion--;
                       textoPuntuacion.setText("Puntuacion: " + puntuacion);
                   }
-              },700);
+              },1000);
            }
 
        }
@@ -198,6 +210,10 @@ public class Juego  extends Activity {
             tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
             tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
             //tablero[i].setImageResource(rinegan);
+            sonido_g = MediaPlayer.create(this, R.raw.aleluya_ganar);
+            sonido_p = MediaPlayer.create(this, R.raw.un_par);
+            sonidos_a = MediaPlayer.create(this, R.raw.abrir_carta);
+            sonido_fallar = MediaPlayer.create(this,R.raw.fallar_carta);
         }
 
        handler.postDelayed(new Runnable() {
@@ -209,7 +225,7 @@ public class Juego  extends Activity {
                    tablero[i].setImageResource(fondo1);
                }
            }
-       }, 700);
+       }, 1000);
 
         for(int i=0; i<tablero.length; i++){
             final int j = i;
