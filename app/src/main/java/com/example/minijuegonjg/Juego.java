@@ -25,6 +25,7 @@ public class Juego  extends Activity {
     ImageButton[] tablero = new ImageButton[16];
     Button botonReiniciar, botonSalir;
     TextView textoPuntuacion;
+    TextView txt_aciertos;
     int puntuacion;
     int aciertos;
 
@@ -111,6 +112,8 @@ public class Juego  extends Activity {
         puntuacion = 0;
         aciertos = 0;
         textoPuntuacion.setText("Puntuacion:  " + puntuacion);
+        txt_aciertos = findViewById(R.id.txt_aciertos);
+        txt_aciertos.setText("Aciertos: " + aciertos);
 
     }
     
@@ -158,6 +161,7 @@ public class Juego  extends Activity {
                aciertos++;
                puntuacion++;
                textoPuntuacion.setText("Puntuacion: " + puntuacion);
+               txt_aciertos.setText("Aciertos: " + aciertos);
                if (aciertos == imagenes.length) {
                    Toast toast = Toast.makeText(getApplicationContext(), "Felicidades has ganado!! ", Toast.LENGTH_SHORT);
                    toast.show();
